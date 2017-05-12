@@ -46,9 +46,9 @@ Hieronder staat de uitleg voor alle beschikbare functies. Ze zijn ingedeeld per 
 
 ### Informatie tonen in de serial monitor
 Arduino kan ons berichten sturen via een "seriele" poort. Die berichten kunnen we bekijken met een "seriele monitor". Gelukkig heeft de Arduino IDE al zo'n monitor voor ons klaargezet. Deze is te vinden onder ```Tools > Serial Monitor```. Door gebruik te maken van onderstaande functies. __Zorg ervoor dat je Seriele Monitor op '9600 baud' staat (rechtsonderin).__
-
+---
 #### toon_op_scherm(tekst)
-Deze functie zal een bericht naar de seriele monitor sturen.
+Deze functie zal een bericht naar de seriele monitor sturen, gevolgd door een enter (nieuwe regel).
 
 __Input__:
 
@@ -65,5 +65,28 @@ __Voorbeeld__:
   void setup() {
     toon_op_scherm("Hallo, van Arduino!");
   }
+  void loop() {
+  }
 ```
+---
+#### voeg_toe_op_scherm(symbool)
+Deze functie zal een bericht naar de seriele monitor sturen zonder een enter toe te voegen. Handig in combinatie met ```regel_op_scherm```. __Deze functie werk alleen met een ```char``` type, dat is een symbool omrings met enkele aanhalingstekens zoals ```'a'```
 
+__Input__:
+
+  _symbool_
+  
+het symbool die je op het scherm wilt toevoegen
+
+__Output__:
+  
+  Geen
+
+__Voorbeeld__:
+```arduino
+  void setup() {
+  }
+  void loop() {
+  voeg_toe_op_scherm('a'); // Er zullen een heleboel a's verschijnen!
+  }
+```
