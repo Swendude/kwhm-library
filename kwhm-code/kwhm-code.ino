@@ -5,6 +5,7 @@
 /////// Begin Kunnen wij het Maken?! code ////////
 
 /// Begininstellingen componenten ///
+
 char keys[4][4] = {
   {'1','2','3','A'},
   {'4','5','6','B'},
@@ -81,20 +82,10 @@ void slaap(float seconde) {
 
 
 /////// Begin eigen code ////////
-void setup() {
-  // Plaats hier de code die je een maal aan het begin wilt uitvoeren:
-  Serial.begin(9600);
-}
-
-void loop() {
-  // Plaats hier de code die je steeds opnieuw wilt uitvoeren:
-//  int waarde = toetsenbord_getal(0, 100, "Hoe graag wil je de led aan?");
-//  if (waarde > 50) {
-//    zet_led_aan(13);
-//  }
-//  else {
-//    zet_led_uit(13);
-//  }
-  toon_op_scherm(lees_potmeter(2));
-  slaap(1);
-}
+  void setup() {
+    // Dit wordt eenmaal uitgevoerd
+  }
+  void loop() {
+    // Dit wordt constant herhaald
+  }
+/////// Einde eigen code ////////
