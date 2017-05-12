@@ -118,7 +118,7 @@ __Voorbeeld__:
 ```
 ---
 
-## Input via een keypad
+### Input via een keypad
 Het toetsenbord dat wij gebruiken heet officeel een keypad. Je ziet ze vaak in liften. Handig om de Arduino te voorzien van input.
 
 #### `toetsenbord_getal(int minimum, int maximum, String *vraag, char *bevestigtoets)`
@@ -169,7 +169,7 @@ __Voorbeeld__:
   }
 ```
 
-## Aansturen van LED
+### Aansturen van LED
 LED's zijn hippe, natuurvriendelijke en duurzame lampjes die erg makkelijk aan te sturen zijn. __Vergeet je resistor niet!__.
 
 ---
@@ -218,7 +218,7 @@ __Voorbeeld__:
   }
 ```
 
-## Potmeters
+### Potmeters
 Een potentiometer kan je gebruiken als draaiknop om een waarde uit te lezen. De waarde loopt van 0 tot 100 (dicht tot helemaal open).
 
 ---
@@ -248,7 +248,7 @@ __Voorbeeld__:
   }
 ```
 
-## Controle functies
+### Controle functies
 De volgende functies interacteren niet met onderdelen maar stellen je in staat je programma te controleren.
 
 ---
