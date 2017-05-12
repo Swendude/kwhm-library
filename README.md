@@ -45,7 +45,9 @@ Deel 1 is door ons geschreven en mag je negeren. Het voorziet de rest van je cod
 Hieronder staat de uitleg voor alle beschikbare functies. Ze zijn ingedeeld per categorie. 
 
 ### Informatie tonen in de serial monitor
+
 Arduino kan ons berichten sturen via een "seriele" poort. Die berichten kunnen we bekijken met een "seriele monitor". Gelukkig heeft de Arduino IDE al zo'n monitor voor ons klaargezet. Deze is te vinden onder ```Tools > Serial Monitor```. Door gebruik te maken van onderstaande functies. __Zorg ervoor dat je Seriele Monitor op '9600 baud' staat (rechtsonderin).__
+
 ---
 #### toon_op_scherm(tekst)
 Deze functie zal een bericht naar de seriele monitor sturen, gevolgd door een enter (nieuwe regel).
