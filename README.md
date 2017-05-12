@@ -1,4 +1,7 @@
 # Kunnen wij het Maken?!
+![](http://i.imgur.com/VvGWHDa.png)
+
+
 <a href="www.setup.nl"><img alt="Setup logo" src=http://www.moocha.nl/wp-content/uploads/2010/04/setup_logo.jpg width="100"></a>     <a href="www.mindmingle.nl"><img alt="Mindmingle logo" src="http://i.imgur.com/NHPQaB8.png" width="100"></a>
 ## introductie
 
