@@ -6,8 +6,12 @@
 
 ## Inhoudsopgave
 [Introductie](#introductie)
-[Hoe te starten?](#hoe-te-starten)
-[Documentatie](#documentatie)
+
+*[Hoe te starten?](#hoe-te-starten)
+...*[Arduino IDE](#arduino-ide)
+...*[KWHM File](#kwhm-file)
+*[Documentatie](#documentatie)
+...*[Informatie tonen in de serial monitor](#informatie-tonen-in-de-serial-monitor)
 
 ## Introductie
 
@@ -21,7 +25,7 @@ Tijdens de masterclasses maak je gebruik van het [Arduino  platform](https://www
 ### Arduino IDE
 Allereerst heb je de Arduino IDE (Integrated Development Envirnoment) nodig. Dit is de plek waarin je je code gaat onderhouden en output van de arduino kan lezen. De IDE kan je [hier](https://www.arduino.cc/en/main/software) downloaden. Zorg ervoor dat je de laatste versie voor je besturingssysteem download! We werken niet met de online versie.
 
-### KWHM file
+### KWHM File
 Om het werken met arduino makkelijker te maken hebben wij alvast een hele hoop code voor je geschreven die je zomeer mag gebruiken. Om deze code te gebruiken moet je de volgende stappen ondernemen:
 
 * Download de repo zipfile: Rechtboven "Clone or download > Download ZIP"
