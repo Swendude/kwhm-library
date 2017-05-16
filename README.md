@@ -3,7 +3,11 @@
 
 
 <a href="www.setup.nl"><img alt="Setup logo" src=http://www.moocha.nl/wp-content/uploads/2010/04/setup_logo.jpg width="100"></a>     <a href="www.mindmingle.nl"><img alt="Mindmingle logo" src="http://i.imgur.com/NHPQaB8.png" width="100"></a>
-## introductie
+
+## Inhoudsopgave
+[Introductie](#Introductie)
+
+## Introductie
 
 Welkom bij de officiele Kunnen wij het Maken?! repository! Een repository is een heel stoer woord voor "plek waar code woont". 
 Op deze pagina vind je alle benodigdheden om je eigen dubieus apparaat te maken.  
