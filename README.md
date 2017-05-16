@@ -5,13 +5,16 @@
 <a href="www.setup.nl"><img alt="Setup logo" src=http://www.moocha.nl/wp-content/uploads/2010/04/setup_logo.jpg width="100"></a>     <a href="www.mindmingle.nl"><img alt="Mindmingle logo" src="http://i.imgur.com/NHPQaB8.png" width="100"></a>
 
 ## Inhoudsopgave
-[Introductie](#introductie)
-
-*[Hoe te starten?](#hoe-te-starten)
-...*[Arduino IDE](#arduino-ide)
-...*[KWHM File](#kwhm-file)
-*[Documentatie](#documentatie)
-...*[Informatie tonen in de serial monitor](#informatie-tonen-in-de-serial-monitor)
++ [Introductie](#introductie)
++ [Hoe te starten?](#hoe-te-starten)
+  + [Arduino IDE](#arduino-ide)
+  + [KWHM File](#kwhm-file)
++ [Documentatie](#documentatie)
+  + [Informatie tonen in de serial monitor](#informatie-tonen-in-de-serial-monitor)
+  + [Input via een keypad](#input-via-een-keypad)
+  + [Aansturen van LED](#aansturen-van-led)
+  + [Potmeters](#potmeters)
+  + [Controle functies](#controle-functies)
 
 ## Introductie
 
