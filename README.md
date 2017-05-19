@@ -326,6 +326,63 @@ __Voorbeeld__:
   }
 ```
 
+### Analoge sensoren & Afstandsmeters
+Veel sensoren die we gebruiken zijn analoog. Om deze sensoren uit te lezen gebruik je de volgende functie
+
+#### `lees_sensor(int *sensorpin)`
+Lees de waarde van de sensor.
+
+__Input__:
+
+  _`int sensorpin` (optioneel)_
+  
+  De (analoge) pin waarop de sensor is aangesloten. Default: 0
+
+__Output__:
+  
+  _`int waarde`_
+  
+  De waarde van de sensor, tussen de 0 en 100. Per sensor verschilt de betekenis van de waarde, probeer het vooral!
+  
+__Voorbeeld__:
+```arduino
+  void setup() {
+    Serial.begin(9600);
+  }
+  void loop() {
+    Serial.println(lees_sensor());
+  }
+```
+
+#### `cm_afstand(int *trigpin, int *echopin)`
+Lees de waarde van de sensor.
+
+__Input__:
+
+  _`int trigpin` (optioneel)_
+  
+  De pin waarop de aansluiting 'trig' zit. Standaard: 12
+ 
+  _`int echopin` (optioneel)_
+  
+  De pin waarop de aansluiting 'echo' zit. Standaard: 12
+
+__Output__:
+  
+  _`int waarde`_
+  
+  De waarde van de sensor. 0 = 0cm afstand, 100 = >50cm afstand.
+  
+__Voorbeeld__:
+```arduino
+  void setup() {
+    Serial.begin(9600);
+  }
+  void loop() {
+    Serial.println(cm_afstand());
+  }
+```
+
 ### Controle functies
 De volgende functies interacteren niet met onderdelen maar stellen je in staat je programma te controleren.
 
@@ -341,7 +398,8 @@ __Input__:
 
 __Output__:
   
-  Geen
+  Feen
+  
   
 __Voorbeeld__:
 ```arduino
