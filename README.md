@@ -14,7 +14,7 @@
   + [Input via een keypad](#input-via-een-keypad)
   + [Aansturen van LED](#aansturen-van-led)
   + [Potmeters](#potmeters)
-  + [DC motoren en Waterpomp](#dc-motoren en waterpomp)
+  + [DC motoren en Waterpomp](#dc-motoren-en-waterpomp)
   + [Analoge sensoren en Afstandsmeters](#analoge-sensoren-en-afstandsmeters)
   + [Controle functies](#controle-functies)
 
