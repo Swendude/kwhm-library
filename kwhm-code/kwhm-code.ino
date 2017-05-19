@@ -17,8 +17,9 @@ char keys[4][4] = {
   {'*','0','#','D'}
 };
 
-byte rowPins[4] = {2, 3, 4, 5};
-byte colPins[4] = {6, 7, 8, 9};
+byte rowPins[4] = {9, 8, 7, 6};
+byte colPins[4] = {5, 4, 3, 2};
+
 
 byte servopin = 9;
 byte transistorpin = 13;
@@ -161,8 +162,6 @@ void setup() {
 }
 
 void loop() {
-  wacht_op_knop();
-  Serial.println("hai");
 
 }
 /////// Einde eigen code ////////

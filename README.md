@@ -1,6 +1,24 @@
 # Kunnen wij het Maken?!
+![](http://i.imgur.com/VvGWHDa.png)
+
+
 <a href="www.setup.nl"><img alt="Setup logo" src=http://www.moocha.nl/wp-content/uploads/2010/04/setup_logo.jpg width="100"></a>     <a href="www.mindmingle.nl"><img alt="Mindmingle logo" src="http://i.imgur.com/NHPQaB8.png" width="100"></a>
-## introductie
+
+## Inhoudsopgave
++ [Introductie](#introductie)
++ [Hoe te starten?](#hoe-te-starten)
+  + [Arduino IDE](#arduino-ide)
+  + [KWHM File](#kwhm-file)
++ [Documentatie](#documentatie)
+  + [Informatie tonen in de serial monitor](#informatie-tonen-in-de-serial-monitor)
+  + [Input via een keypad](#input-via-een-keypad)
+  + [Aansturen van LED](#aansturen-van-led)
+  + [Potmeters](#potmeters)
+  + [DC motoren en Waterpomp](#dc-motoren-en-waterpomp)
+  + [Analoge sensoren en Afstandsmeters](#analoge-sensoren-en-afstandsmeters)
+  + [Controle functies](#controle-functies)
+
+## Introductie
 
 Welkom bij de officiele Kunnen wij het Maken?! repository! Een repository is een heel stoer woord voor "plek waar code woont". 
 Op deze pagina vind je alle benodigdheden om je eigen dubieus apparaat te maken.  
@@ -12,7 +30,7 @@ Tijdens de masterclasses maak je gebruik van het [Arduino  platform](https://www
 ### Arduino IDE
 Allereerst heb je de Arduino IDE (Integrated Development Envirnoment) nodig. Dit is de plek waarin je je code gaat onderhouden en output van de arduino kan lezen. De IDE kan je [hier](https://www.arduino.cc/en/main/software) downloaden. Zorg ervoor dat je de laatste versie voor je besturingssysteem download! We werken niet met de online versie.
 
-### KWHM file
+### KWHM File
 Om het werken met arduino makkelijker te maken hebben wij alvast een hele hoop code voor je geschreven die je zomeer mag gebruiken. Om deze code te gebruiken moet je de volgende stappen ondernemen:
 
 * Download de repo zipfile: Rechtboven "Clone or download > Download ZIP"
@@ -247,6 +265,125 @@ __Voorbeeld__:
   void loop() {
   }
 ```
+### Servo motoren
+Servo motoren aansturen doe je met de volgende functies. Let op met het opgeven van hoeken, de meeste servo's vinden hoeken onder de 20 en boven de 170 graden moeilijk. Ze gaan dan 'jitteren'.
+
+#### `positioneer_servo(int hoek, int *pinummer)`
+Laat je Arduino lekker rusten af en toe.
+
+__Input__:
+
+  _`int hoek`_
+  
+  de hoek waarin je de servo wilt positioneren
+  
+   _`int pinummer` (optioneel)_
+  
+  Het pinnumer van de servo. 
+  _Standaard: 9_
+
+__Output__:
+  
+  Geen
+  
+__Voorbeeld__:
+```arduino
+  void setup() {
+    positioneer_servo(15);
+    slaap(1);
+    positioneer_servo(170);
+  }
+  void loop() {
+    
+  }
+```
+### DC motoren en Waterpomp
+Dc motoren stuur je aan via een transistor (= een aan/uit knop). Een waterpomp stuur je op dezelfde manier aan als een dc motor.
+
+#### `dcmotor_seconde(float seconde, int *pinummer)`
+Laat je Arduino lekker rusten af en toe.
+
+__Input__:
+
+  _`float seconde`_
+  
+  Aantal seconde dat de motor gaat draaien.
+  
+   _`int pinummer` (optioneel)_
+  
+  Het pinnumer van de transistor. 
+  _Standaard: 13_
+
+__Output__:
+  
+  Geen
+  
+__Voorbeeld__:
+```arduino
+  void setup() {
+    dcmotor_seconde(15);
+  }
+  void loop() {
+    
+  }
+```
+
+### Analoge sensoren en Afstandsmeters
+Veel sensoren die we gebruiken zijn analoog. Om deze sensoren uit te lezen gebruik je de volgende functie
+
+#### `lees_sensor(int *sensorpin)`
+Lees de waarde van de sensor.
+
+__Input__:
+
+  _`int sensorpin` (optioneel)_
+  
+  De (analoge) pin waarop de sensor is aangesloten. Default: 0
+
+__Output__:
+  
+  _`int waarde`_
+  
+  De waarde van de sensor, tussen de 0 en 100. Per sensor verschilt de betekenis van de waarde, probeer het vooral!
+  
+__Voorbeeld__:
+```arduino
+  void setup() {
+    Serial.begin(9600);
+  }
+  void loop() {
+    Serial.println(lees_sensor());
+  }
+```
+
+#### `cm_afstand(int *trigpin, int *echopin)`
+Lees de waarde van de sensor.
+
+__Input__:
+
+  _`int trigpin` (optioneel)_
+  
+  De pin waarop de aansluiting 'trig' zit. Standaard: 12
+ 
+  _`int echopin` (optioneel)_
+  
+  De pin waarop de aansluiting 'echo' zit. Standaard: 12
+
+__Output__:
+  
+  _`int waarde`_
+  
+  De waarde van de sensor. 0 = 0cm afstand, 100 = >50cm afstand.
+  
+__Voorbeeld__:
+```arduino
+  void setup() {
+    Serial.begin(9600);
+  }
+  void loop() {
+    Serial.println(cm_afstand());
+  }
+```
 
 ### Controle functies
 De volgende functies interacteren niet met onderdelen maar stellen je in staat je programma te controleren.
@@ -263,7 +400,8 @@ __Input__:
 
 __Output__:
   
-  Geen
+  Feen
+  
   
 __Voorbeeld__:
 ```arduino
