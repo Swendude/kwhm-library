@@ -14,8 +14,8 @@
   + [Input via een keypad](#input-via-een-keypad)
   + [Aansturen van LED](#aansturen-van-led)
   + [Potmeters](#potmeters)
-  + [DC motoren/Waterpomp](#dc-motoren/waterpomp)
-  + [Analoge sensoren & Afstandsmeters](#analoge-sensoren-&-afstandsmeters)
+  + [DC motoren en Waterpomp](#dc-motoren en waterpomp)
+  + [Analoge sensoren en Afstandsmeters](#analoge-sensoren-en-afstandsmeters)
   + [Controle functies](#controle-functies)
 
 ## Introductie
@@ -297,7 +297,7 @@ __Voorbeeld__:
     
   }
 ```
-### DC motoren/Waterpomp
+### DC motoren en Waterpomp
 Dc motoren stuur je aan via een transistor (= een aan/uit knop). Een waterpomp stuur je op dezelfde manier aan als een dc motor.
 
 #### `dcmotor_seconde(float seconde, int *pinummer)`
@@ -328,7 +328,7 @@ __Voorbeeld__:
   }
 ```
 
-### Analoge sensoren & Afstandsmeters
+### Analoge sensoren en Afstandsmeters
 Veel sensoren die we gebruiken zijn analoog. Om deze sensoren uit te lezen gebruik je de volgende functie
 
 #### `lees_sensor(int *sensorpin)`
