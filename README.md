@@ -263,6 +263,39 @@ __Voorbeeld__:
   void loop() {
   }
 ```
+### Servo motoren
+Servo motoren aansturen doe je met de volgende functies. Let op met het opgeven van hoeken, de meeste servo's vinden hoeken onder de 20 en boven de 170 graden moeilijk. Ze gaan dan 'jitteren'.
+
+#### `positioneer_servo(int hoek, int *pinummer)`
+Laat je Arduino lekker rusten af en toe.
+
+__Input__:
+
+  _`int hoek`_
+  
+  de hoek waarin je de servo wilt positioneren
+  
+   _`int pinummer` (optioneel)_
+  
+  Het pinnumer van de servo. 
+  _Standaard: 9_
+
+__Output__:
+  
+  Geen
+  
+__Voorbeeld__:
+```arduino
+  void setup() {
+    positioneer_servo(15);
+    slaap(1);
+    positioneer_servo(170);
+  }
+  void loop() {
+    
+  }
+```
+
 
 ### Controle functies
 De volgende functies interacteren niet met onderdelen maar stellen je in staat je programma te controleren.
