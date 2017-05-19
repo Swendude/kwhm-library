@@ -295,7 +295,36 @@ __Voorbeeld__:
     
   }
 ```
+### DC motoren
+Dc motoren stuur je aan via een transistor (= een aan/uit knop). 
 
+#### `dcmotor_seconde(float seconde, int *pinummer)`
+Laat je Arduino lekker rusten af en toe.
+
+__Input__:
+
+  _`float seconde`_
+  
+  Aantal seconde dat de motor gaat draaien.
+  
+   _`int pinummer` (optioneel)_
+  
+  Het pinnumer van de transistor. 
+  _Standaard: 13_
+
+__Output__:
+  
+  Geen
+  
+__Voorbeeld__:
+```arduino
+  void setup() {
+    dcmotor_seconde(15);
+  }
+  void loop() {
+    
+  }
+```
 
 ### Controle functies
 De volgende functies interacteren niet met onderdelen maar stellen je in staat je programma te controleren.
