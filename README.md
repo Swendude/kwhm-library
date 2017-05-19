@@ -295,8 +295,8 @@ __Voorbeeld__:
     
   }
 ```
-### DC motoren
-Dc motoren stuur je aan via een transistor (= een aan/uit knop). 
+### DC motoren/Waterpomp
+Dc motoren stuur je aan via een transistor (= een aan/uit knop). Een waterpomp stuur je op dezelfde manier aan als een dc motor.
 
 #### `dcmotor_seconde(float seconde, int *pinummer)`
 Laat je Arduino lekker rusten af en toe.
