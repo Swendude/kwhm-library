@@ -446,6 +446,51 @@ Data.csv:
 ...
 ```
 
+#### `lees_keuze_waardes(String waardes[], int lengtewaardes, int *pinummer)`
+Laat de gebruiker een keuze maken uit een lijst en geef de waarde op die plek terug.
+
+__Input__:
+
+  _`String waardes[]`_
+  De lijst met waardes om uit te kiezen
+  
+  _`int lengtewaardes`_
+  De lengte van de lijst hierboven.
+  
+  _`int pinummer` (optioneel)_
+  Het pinummer (ss) van de SD kaartlezer.
+
+__Output__:
+  
+  _`int waarde`_
+  
+  De waarde die bij de 'sleutel' hoort
+
+__Voorbeeld__:
+
+Arduino code:
+
+```arduino
+  void setup(){
+    Serial.begin(9600);
+    String keuzes[] = {"Aardig", "Boos", "Verwarrend", "Appelmoes"}; // Op deze manier maak je een lijst
+    Serial.println(lees_keuze_waardes(keuzes, 4)); // Laat de gebruiker een keuze maken uit de lijst. Bijvoorbeeld "Boos". Dat is plek 2, dus dit print "64"
+  }
+  
+  void loop(){
+  }
+```
+
+Data.csv:
+```csv
+...
+1, 67
+2, 64
+3, 12
+4, 14
+...
+```
+
 ---
 ### Controle functies
 De volgende functies interacteren niet met onderdelen maar stellen je in staat je programma te controleren.
