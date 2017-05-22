@@ -357,7 +357,7 @@ __Voorbeeld__:
 ```
 
 #### `cm_afstand(int *trigpin, int *echopin)`
-Lees de waarde van de sensor.
+Lees de waarde van de afstandssensor. Om deze functie te gebruiken is het belangrijk de "Ultrasonic" library te installeren. Ga hiervoor in de Arduino IDE naar `Sketch > Include Library > Manage libraries...` en zoek dan op `Ultrasonic` en installeer de Ultrasonic library van `Eric Simões`.
 
 __Input__:
 
