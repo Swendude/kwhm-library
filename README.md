@@ -17,6 +17,7 @@
   + [Knoppen](#knoppen)
   + [DC motoren en Waterpomp](#dc-motoren-en-waterpomp)
   + [Analoge sensoren en Afstandsmeters](#analoge-sensoren-en-afstandsmeters)
+  + [SD Kaartlezer](#sd-kaartlezer)
   + [Controle functies](#controle-functies)
 
 ## Introductie
@@ -402,10 +403,52 @@ __Voorbeeld__:
   }
 ```
 ---
+### SD Kaartlezer
+Om je apparaat van data te voorzien heb je natuurlijk een database nodig. Wij gebruiken hiervoor een .csv bestand.
+
+#### `lees_numerieke_waarde(int waarde, int *pinummer)`
+Lees de waarde van de input op de sd kaart.
+
+__Input__:
+  _`int waarde`_
+  De 'sleutel' waarvan de waarde opgezocht moet worden
+  
+  _`int pinummer` (optioneel)_
+  Het pinummer (ss) van de SD kaartlezer.
+
+__Output__:
+  
+  _`int waarde`_
+  
+  De waarde die bij de 'sleutel' hoort
+
+__Voorbeeld__:
+
+Arduino code:
+
+```arduino
+  void setup(){
+    Serial.begin(9600);
+  }
+  
+  void loop(){
+    Serial.println(lees_numerieke_waarde(3511)); # Print: 45
+  }
+```
+
+Data.csv:
+```csv
+...
+3510, 67
+3511, 45
+3512, 12
+...
+```
+
+---
 ### Controle functies
 De volgende functies interacteren niet met onderdelen maar stellen je in staat je programma te controleren.
 
----
 #### `slaap(float seconde)`
 Laat je Arduino lekker rusten af en toe.
 
