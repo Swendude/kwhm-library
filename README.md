@@ -14,6 +14,7 @@
   + [Input via een keypad](#input-via-een-keypad)
   + [Aansturen van LED](#aansturen-van-led)
   + [Potmeters](#potmeters)
+  + [Knoppen](#knoppen)
   + [DC motoren en Waterpomp](#dc-motoren-en-waterpomp)
   + [Analoge sensoren en Afstandsmeters](#analoge-sensoren-en-afstandsmeters)
   + [Controle functies](#controle-functies)
@@ -265,6 +266,20 @@ __Voorbeeld__:
   void loop() {
   }
 ```
+### Knoppen
+Een drukknop kan wachten totdat deze ingedrukt wordt. Dat kan met de volgende functie.
+
+#### `wacht_op_knop(int *pinummer)`
+Wacht net zolang tot de knop is ingedrukt
+
+__Input__:
+  
+  _`int pinummer` (optioneel)_
+   
+ Het pinnummer van de knop.
+ _Standaard: 10_
+
+
 ### Servo motoren
 Servo motoren aansturen doe je met de volgende functies. Let op met het opgeven van hoeken, de meeste servo's vinden hoeken onder de 20 en boven de 170 graden moeilijk. Ze gaan dan 'jitteren'.
 
@@ -279,7 +294,7 @@ __Input__:
   
    _`int pinummer` (optioneel)_
   
-  Het pinnumer van de servo. 
+  Het pinnummer van de servo. 
   _Standaard: 9_
 
 __Output__:
