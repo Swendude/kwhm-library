@@ -410,6 +410,7 @@ Om je apparaat van data te voorzien heb je natuurlijk een database nodig. Wij ge
 Lees de waarde van de input op de sd kaart.
 
 __Input__:
+
   _`int waarde`_
   De 'sleutel' waarvan de waarde opgezocht moet worden
   
