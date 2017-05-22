@@ -1,20 +1,19 @@
 #include <Ultrasonic.h>
-
 #include <Key.h>
 #include <Keypad.h>
 #include <ctype.h>
 #include <Servo.h>
+#include <SD.h>
 #include "pitches.h"
 
 /////// Begin Kunnen wij het Maken?! code ////////
 
 /// Begininstellingen componenten ///
-
 char keys[4][4] = {
-  {'1','2','3','A'},
-  {'4','5','6','B'},
-  {'7','8','9','C'},
-  {'*','0','#','D'}
+  {'1', '2', '3', 'A'},
+  {'4', '5', '6', 'B'},
+  {'7', '8', '9', 'C'},
+  {'*', '0', '#', 'D'}
 };
 
 byte rowPins[4] = {9, 8, 7, 6};
@@ -28,14 +27,62 @@ byte sensorpin = 0;
 byte trigpin = 12;
 byte echopin = 13;
 byte knoppin = 10;
+byte sdpin = 10;
+
+File datafile;
 
 Keypad toetsenbord = Keypad( makeKeymap(keys), rowPins, colPins, 4, 4);
 Servo mijnservo;
 
 /// Einde instellingen componenten ///
+
+int lees_numerieke_waarde(int waarde, int sdpin = sdpin){
+  bool hasSD = SD.begin(sdpin);
+  datafile = SD.open("data.csv", FILE_READ);
+  if (!hasSD) {
+    Serial.println("SD kaart lezer niet herkend");
+    return - 1;
+  };
+  if (!datafile) {
+    Serial.println("Datafile kan niet gelezen worden");
+    return - 1;
+  };
+  while(datafile.available() != 0) {
+    String eerstedeel = datafile.readStringUntil(',');
+    String tweededeel = datafile.readStringUntil('\n');
+    int eersteint = eerstedeel.toInt();
+    int tweedeint = tweededeel.toInt();
+    if (waarde == eersteint) {
+      return tweedeint; 
+      };
+    };
+    Serial.println("Inputwaarde niet gevonden");
+    return -1;
+  }
+ 
+int lees_keuze_waardes(String waardes[], int lengtewaardes, int sdpin = sdpin){
+  for (int i = 0; i < lengtewaardes; i++) {
+    String keuze = String(i + 1) + ":" + waardes[i];
+    Serial.println(keuze);
+  }
+  Serial.println("Maak een keuze");
+  int keuze = toetsenbord.waitForKey();
+  if ((keuze - 1 <= lengtewaardes) && ((keuze - 1) >= 0)) {
+    return lees_numerieke_waarde(keuze - 1, sdpin);
+  }
+  else {
+    Serial.println("Ongeldige keuze");
+    return -1;
+  }
+}
+
+
+
+
+
 void wacht_op_knop(int knoppin = knoppin) {
-    pinMode(knoppin, INPUT);
-    while (true) {
+  pinMode(knoppin, INPUT);
+  while (true) {
     int buttonState = digitalRead(10);
     if (buttonState == HIGH) {
       slaap(0.3);
@@ -56,7 +103,7 @@ int cm_afstand(int trigpin = trigpin, int echopin = echopin) {
     int distance2 = uss.distanceRead();
 
     if (abs(distance1 - distance2) < 5) {
-      distance = ((distance1 + distance2)/2);
+      distance = ((distance1 + distance2) / 2);
       distancefound = true;
     }
   }
@@ -65,11 +112,11 @@ int cm_afstand(int trigpin = trigpin, int echopin = echopin) {
   }
   else {
     return map(uss.distanceRead(), 0, 50, 0, 100);
-  }  
+  }
 }
 
 int lees_sensor(int sensorpin = sensorpin) {
-  return map(analogRead(sensorpin), 0, 1024, 0 ,100);
+  return map(analogRead(sensorpin), 0, 1024, 0 , 100);
 }
 
 void speel_toon(int toon, float seconde, int pinummer = speakerpin) {
@@ -89,7 +136,7 @@ void positioneer_servo(int hoek, int pinnummer = servopin) {
   mijnservo.attach(servopin);
   mijnservo.write(hoek);
   delay(30);
-//  mijnservo.detach();
+  //  mijnservo.detach();
 }
 
 void toon_op_scherm(String tekst) {
@@ -115,7 +162,7 @@ int toetsenbord_getal(int minimum, int maximum, String vraag = "", char bevestig
     vraag = "Getal tussen " + String(minimum) + " en " + String(maximum);
   }
   toon_op_scherm(vraag);
-  
+
   while (not submitted) {
     char inputchar = toetsenbord.waitForKey();
     if (isDigit(inputchar)) {
@@ -126,7 +173,7 @@ int toetsenbord_getal(int minimum, int maximum, String vraag = "", char bevestig
     }
     if (inputchar == bevestigtoets) {
       regel_op_scherm();
-      submitted = true;   
+      submitted = true;
     }
   }
   return input.toInt();
@@ -158,10 +205,10 @@ void slaap(float seconde) {
 /////// Begin eigen code ////////
 void setup() {
   Serial.begin(9600);
-  
+  String keuzes[] = {"Swen", "Mike", "Erik", "Sander"};
+  lees_keuze_waardes(keuzes, 4);
 }
 
 void loop() {
-
 }
 /////// Einde eigen code ////////
