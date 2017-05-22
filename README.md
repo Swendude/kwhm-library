@@ -187,7 +187,7 @@ __Voorbeeld__:
   toon_op_scherm(String(getal) + '%'); 
   }
 ```
-
+---
 ### Aansturen van LED
 LED's zijn hippe, natuurvriendelijke en duurzame lampjes die erg makkelijk aan te sturen zijn. __Vergeet je resistor niet!__.
 
@@ -236,7 +236,7 @@ __Voorbeeld__:
   void loop() {
   }
 ```
-
+---
 ### Potmeters
 Een potentiometer kan je gebruiken als draaiknop om een waarde uit te lezen. De waarde loopt van 0 tot 100 (dicht tot helemaal open).
 
@@ -266,6 +266,7 @@ __Voorbeeld__:
   void loop() {
   }
 ```
+---
 ### Knoppen
 Een drukknop kan wachten totdat deze ingedrukt wordt. Dat kan met de volgende functie.
 
@@ -279,7 +280,7 @@ __Input__:
  Het pinnummer van de knop.
  _Standaard: 10_
 
-
+---
 ### Servo motoren
 Servo motoren aansturen doe je met de volgende functies. Let op met het opgeven van hoeken, de meeste servo's vinden hoeken onder de 20 en boven de 170 graden moeilijk. Ze gaan dan 'jitteren'.
 
@@ -312,6 +313,7 @@ __Voorbeeld__:
     
   }
 ```
+---
 ### DC motoren en Waterpomp
 Dc motoren stuur je aan via een transistor (= een aan/uit knop). Een waterpomp stuur je op dezelfde manier aan als een dc motor.
 
@@ -342,7 +344,7 @@ __Voorbeeld__:
     
   }
 ```
-
+---
 ### Analoge sensoren en Afstandsmeters
 Veel sensoren die we gebruiken zijn analoog. Om deze sensoren uit te lezen gebruik je de volgende functie
 
@@ -399,7 +401,7 @@ __Voorbeeld__:
     Serial.println(cm_afstand());
   }
 ```
-
+---
 ### Controle functies
 De volgende functies interacteren niet met onderdelen maar stellen je in staat je programma te controleren.
 
