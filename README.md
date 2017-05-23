@@ -15,6 +15,7 @@
   + [Aansturen van LED](#aansturen-van-led)
   + [Potmeters](#potmeters)
   + [Knoppen](#knoppen)
+  + [Servo motoren](#servo-motoren)
   + [DC motoren en Waterpomp](#dc-motoren-en-waterpomp)
   + [Analoge sensoren en Afstandsmeters](#analoge-sensoren-en-afstandsmeters)
   + [SD Kaartlezer](#sd-kaartlezer)
@@ -286,7 +287,7 @@ __Input__:
 Servo motoren aansturen doe je met de volgende functies. Let op met het opgeven van hoeken, de meeste servo's vinden hoeken onder de 20 en boven de 170 graden moeilijk. Ze gaan dan 'jitteren'.
 
 #### `positioneer_servo(int hoek, int *pinummer)`
-Laat je Arduino lekker rusten af en toe.
+Zet de servo in een bepaalde hoek.
 
 __Input__:
 
