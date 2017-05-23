@@ -468,19 +468,21 @@ Arduino code:
 ```arduino
   void setup(){
     Serial.begin(9600);
+    int getal = toetsenbord_getal(1000, 10000, "Voer een postcode in");
+    int postcode_waarde = lees_numerieke_waarde(getal);
+    toon_op_scherm("de waarde van postcode " + String(getal) + " is " + String(postcode_waarde));
   }
   
   void loop(){
-    Serial.println(lees_numerieke_waarde(3511)); # Print: 45
   }
 ```
-
-Data.csv:
+voorbeeld van hoe je data-bestand eruit kan zien op je SD kaart als we naar postcodes kijken:
+_data.csv_
 ```csv
 ...
-3510, 67
-3511, 45
-3512, 12
+3510,67
+3511,45
+3512,12
 ...
 ```
 
@@ -528,32 +530,6 @@ Foutloos Nederlands spreken,67
 Rechtvaardigheid,64
 Samen,12
 Geld,14
-...
-```
-
-__Voorbeeld__:
-een ander voorbeeld is wanneer je postcodes invoert op je toetsenbord, en jou data een score teruggeeft voor elke postcode. dit kan zo:
-
-```arduino
-  void setup(){
-    Serial.begin(9600);
-    int getal = toetsenbord_getal(1000, 10000, "Voer een postcode in");
-    int postcode_waarde = lees_numerieke_waarde(getal);
-    toon_op_scherm("de waarde van postcode " + String(getal) + " is " + String(postcode_waarde));
-  }
-  
-  void loop(){
-  }
-```
-voorbeeld van hoe je data-bestand eruit kan zien op je SD kaart als we naar postcodes kijken:
-
-data.csv:
-```csv
-...
-1000,67
-1001,64
-1002,12
-1003,14
 ...
 ```
 
