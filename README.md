@@ -466,15 +466,15 @@ __Voorbeeld__:
 Arduino code:
 
 ```arduino
-  void setup(){
-    Serial.begin(9600);
-    int getal = toetsenbord_getal(1000, 10000, "Voer een postcode in");
-    int postcode_waarde = lees_numerieke_waarde(getal);
-    toon_op_scherm("de waarde van postcode " + String(getal) + " is " + String(postcode_waarde));
-  }
+void setup(){
+  Serial.begin(9600);
+  int postcode = toetsenbord_getal(1000, 10000, "Voer een postcode in");
+  int postcode_waarde = lees_numerieke_waarde(postcode);
+  toon_op_scherm("de waarde van postcode " + String(postcode) + " is " + String(postcode_waarde));
+}
   
-  void loop(){
-  }
+void loop(){
+}
 ```
 voorbeeld van hoe je data-bestand eruit kan zien op je SD kaart als we naar postcodes kijken:
 _data.csv_
@@ -511,15 +511,15 @@ __Voorbeeld__:
 Arduino code:
 
 ```arduino
-  void setup(){
-    Serial.begin(9600);
-    String keuzes[] = {"Foutloos Nederlands spreken", "Rechtvaardigheid", "Samen", "Geld", "Wat de buren van mij denken", "Een mooie auto", "Werk", "Vrijheid", "Kunnen Wij Het Maken?!"}; // Op deze manier maak je een lijst
-  int getal = lees_keuze_waardes(keuzes, 9); // Laat de gebruiker een keuze maken uit de lijst. Bijvoorbeeld "Boos". Dan print dit "64"
-  toon_op_scherm(getal);
-  }
+void setup(){
+  Serial.begin(9600);
+  String keuzes[] = {"Foutloos Nederlands spreken", "Rechtvaardigheid", "Samen", "Geld", "Wat de buren van mij denken", "Een mooie auto", "Werk", "Vrijheid", "Kunnen Wij Het Maken?!"}; // Op deze manier maak je een lijst
+  int waarde = lees_keuze_waardes(keuzes, 9); // Laat de gebruiker een keuze maken uit de lijst. Bijvoorbeeld "Boos". Dan print dit "64"
+  toon_op_scherm(waarde);
+}
   
   void loop(){
-  }
+}
 ```
 voorbeeld van hoe je data-bestand eruit kan zien op je SD kaart.  
 
