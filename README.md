@@ -522,10 +522,10 @@ Arduino code:
 Data.csv:
 ```csv
 ...
-boos, 67
-gelukkig, 64
-dom, 12
-slim, 14
+Aardig, 67
+Boos, 64
+Verwarrend, 12
+Appelmoes, 14
 ...
 ```
 
