@@ -84,6 +84,7 @@ void dcmotor_seconde(float seconde, int pinnummer = transistorpin) {
   digitalWrite(pinnummer, LOW);
 }
 
+
 void positioneer_servo(int hoek, int pinnummer = servopin) {
   mijnservo.attach(pinnummer);
   mijnservo.write(hoek);
