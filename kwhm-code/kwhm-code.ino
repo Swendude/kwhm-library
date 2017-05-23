@@ -35,6 +35,29 @@ Servo mijnservo;
 
 /// Einde instellingen componenten ///
 
+int lees_tekst_waarde(String waarde, int sdpin = sdpin){
+   bool hasSD = SD.begin(sdpin);
+  datafile = SD.open("data.csv", FILE_READ);
+  if (!hasSD) {
+    Serial.println("SD kaart lezer niet herkend");
+    return - 1;
+  };
+  if (!datafile) {
+    Serial.println("Datafile kan niet gelezen worden");
+    return - 1;
+  };
+  while(datafile.available() != 0) {
+    String eerstedeel = datafile.readStringUntil(',');
+    String tweededeel = datafile.readStringUntil('\n');
+    int tweedeint = tweededeel.toInt();
+    if (waarde == eerstedeel) {
+      return tweedeint; 
+      };
+    };
+    Serial.println("Inputwaarde niet gevonden");
+    return -1;
+  }
+ 
 int lees_numerieke_waarde(int waarde, int sdpin = sdpin){
   bool hasSD = SD.begin(sdpin);
   datafile = SD.open("data.csv", FILE_READ);
@@ -67,7 +90,8 @@ int lees_keuze_waardes(String waardes[], int lengtewaardes, int sdpin = sdpin){
   Serial.println("Maak een keuze");
   int keuze = toetsenbord.waitForKey();
   if ((keuze - 1 <= lengtewaardes) && ((keuze - 1) >= 0)) {
-    return lees_numerieke_waarde(keuze - 1, sdpin);
+    String keuzewoord = waardes[keuze]
+    return lees_tekst_waarde(keuzewoord, sdpin);
   }
   else {
     Serial.println("Ongeldige keuze");
