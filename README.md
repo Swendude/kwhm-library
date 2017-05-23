@@ -512,7 +512,7 @@ Arduino code:
   void setup(){
     Serial.begin(9600);
     String keuzes[] = {"Aardig", "Boos", "Verwarrend", "Appelmoes"}; // Op deze manier maak je een lijst
-    Serial.println(lees_keuze_waardes(keuzes, 4)); // Laat de gebruiker een keuze maken uit de lijst. Bijvoorbeeld "Boos". Dat is plek 2, dus dit print "64"
+    Serial.println(lees_keuze_waardes(keuzes, 4)); // Laat de gebruiker een keuze maken uit de lijst. Bijvoorbeeld "Boos". Dan print dit "64"
   }
   
   void loop(){
@@ -522,10 +522,10 @@ Arduino code:
 Data.csv:
 ```csv
 ...
-1, 67
-2, 64
-3, 12
-4, 14
+boos, 67
+gelukkig, 64
+dom, 12
+slim, 14
 ...
 ```
 
