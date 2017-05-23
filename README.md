@@ -16,6 +16,7 @@
   + [Potmeters](#potmeters)
   + [Knoppen](#knoppen)
   + [Servo motoren](#servo-motoren)
+  + [Geluid maken](#geluid-maken)
   + [DC motoren en Waterpomp](#dc-motoren-en-waterpomp)
   + [Analoge sensoren en Afstandsmeters](#analoge-sensoren-en-afstandsmeters)
   + [SD Kaartlezer](#sd-kaartlezer)
@@ -316,11 +317,47 @@ __Voorbeeld__:
   }
 ```
 ---
+### Geluid maken
+Als je een speaker aansluit kan je tonen (en dus muziek) maken met de volgende functie:
+
+#### `void speel_toon(int toon, float seconde, int *pinummer)`
+Speel een toon op de speaker.
+
+__Input__:
+
+  _`int toon`_
+  
+  De toon die je wilt spelen. Kijk naar de file "Pitches.h" om tonen te vinden.
+  
+  _`float seconde`_
+  
+  Aantal seconde dat toon speelt.
+
+   _`int pinummer` (optioneel)_
+  
+  Het pinnumer van de speaker. 
+  _Standaard: 11_
+  
+__Output__:
+  
+  Geen
+  
+__Voorbeeld__:
+```arduino
+  void setup() {
+    speel_toon(NOTE_G1, 10); // NOTE_G1 komt uit pitches.h
+  }
+  void loop() {
+    
+  }
+```
+---
+
 ### DC motoren en Waterpomp
 Dc motoren stuur je aan via een transistor (= een aan/uit knop). Een waterpomp stuur je op dezelfde manier aan als een dc motor.
 
 #### `dcmotor_seconde(float seconde, int *pinummer)`
-Laat je Arduino lekker rusten af en toe.
+Laat een DC motor draaien.
 
 __Input__:
 
