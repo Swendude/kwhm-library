@@ -511,21 +511,49 @@ Arduino code:
 ```arduino
   void setup(){
     Serial.begin(9600);
-    String keuzes[] = {"Aardig", "Boos", "Verwarrend", "Appelmoes"}; // Op deze manier maak je een lijst
-    Serial.println(lees_keuze_waardes(keuzes, 4)); // Laat de gebruiker een keuze maken uit de lijst. Bijvoorbeeld "Boos". Dan print dit "64"
+    String keuzes[] = {"Foutloos Nederlands spreken", "Rechtvaardigheid", "Samen", "Geld", "Wat de buren van mij denken", "Een mooie auto", "Werk", "Vrijheid", "Kunnen Wij Het Maken?!"}; // Op deze manier maak je een lijst
+  int getal = lees_keuze_waardes(keuzes, 9); // Laat de gebruiker een keuze maken uit de lijst. Bijvoorbeeld "Boos". Dan print dit "64"
+  toon_op_scherm(getal);
   }
   
   void loop(){
   }
 ```
+voorbeeld van hoe je data-bestand eruit kan zien op je SD kaart.  
 
-Data.csv:
+data.csv:
 ```csv
 ...
-Aardig, 67
-Boos, 64
-Verwarrend, 12
-Appelmoes, 14
+Foutloos Nederlands spreken,67
+Rechtvaardigheid,64
+Samen,12
+Geld,14
+...
+```
+
+__Voorbeeld__:
+een ander voorbeeld is wanneer je postcodes invoert op je toetsenbord, en jou data een score teruggeeft voor elke postcode. dit kan zo:
+
+```arduino
+  void setup(){
+    Serial.begin(9600);
+    int getal = toetsenbord_getal(1000, 10000, "Voer een postcode in");
+    int postcode_waarde = lees_numerieke_waarde(getal);
+    toon_op_scherm("de waarde van postcode " + String(getal) + " is " + String(postcode_waarde));
+  }
+  
+  void loop(){
+  }
+```
+voorbeeld van hoe je data-bestand eruit kan zien op je SD kaart als we naar postcodes kijken:
+
+data.csv:
+```csv
+...
+1000,67
+1001,64
+1002,12
+1003,14
 ...
 ```
 
