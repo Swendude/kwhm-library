@@ -36,7 +36,7 @@ Servo mijnservo;
 /// Einde instellingen componenten ///
 
 int lees_tekst_waarde(String waarde, int sdpin = sdpin){
-   bool hasSD = SD.begin(sdpin);
+  bool hasSD = SD.begin(sdpin);
   datafile = SD.open("data.csv", FILE_READ);
   if (!hasSD) {
     Serial.println("SD kaart lezer niet herkend");
@@ -81,22 +81,40 @@ int lees_numerieke_waarde(int waarde, int sdpin = sdpin){
     Serial.println("Inputwaarde niet gevonden");
     return -1;
   }
+
+int toetsenbord_getal(int minimum, int maximum, String vraag = "", char bevestigtoets = 'D') {
+  String input = "";
+  bool submitted = false;
+  if (vraag == "") {
+    vraag = "Getal tussen " + String(minimum) + " en " + String(maximum);
+  }
+  toon_op_scherm(vraag);
+
+  while (not submitted) {
+    char inputchar = toetsenbord.waitForKey();
+    if (isDigit(inputchar)) {
+      if ((input + inputchar).toInt() <= maximum) {
+        input += inputchar;
+        voeg_toe_op_scherm(inputchar);
+      }
+    }
+    if (inputchar == bevestigtoets) {
+      regel_op_scherm();
+      submitted = true;
+    }
+  }
+  return input.toInt();
+}
  
 int lees_keuze_waardes(String waardes[], int lengtewaardes, int sdpin = sdpin){
+  regel_op_scherm();
   for (int i = 0; i < lengtewaardes; i++) {
-    String keuze = String(i + 1) + ":" + waardes[i];
+    String keuze = String(i + 1) + " : " + waardes[i];
     Serial.println(keuze);
   }
-  Serial.println("Maak een keuze");
-  int keuze = toetsenbord.waitForKey();
-  if ((keuze - 1 <= lengtewaardes) && ((keuze - 1) >= 0)) {
-    String keuzewoord = waardes[keuze]
-    return lees_tekst_waarde(keuzewoord, sdpin);
-  }
-  else {
-    Serial.println("Ongeldige keuze");
-    return -1;
-  }
+  int keuze = toetsenbord_getal(0, lengtewaardes, "Maak een keuze:");
+  String keuzewoord = waardes[keuze - 1];
+  return lees_tekst_waarde(keuzewoord, sdpin);
 }
 
 void wacht_op_knop(int pinnummer = knoppin) {
@@ -175,30 +193,6 @@ void regel_op_scherm() {
   Serial.println();
 }
 
-int toetsenbord_getal(int minimum, int maximum, String vraag = "", char bevestigtoets = 'D') {
-  String input = "";
-  bool submitted = false;
-  if (vraag == "") {
-    vraag = "Getal tussen " + String(minimum) + " en " + String(maximum);
-  }
-  toon_op_scherm(vraag);
-
-  while (not submitted) {
-    char inputchar = toetsenbord.waitForKey();
-    if (isDigit(inputchar)) {
-      if ((input + inputchar).toInt() <= maximum) {
-        input += inputchar;
-        voeg_toe_op_scherm(inputchar);
-      }
-    }
-    if (inputchar == bevestigtoets) {
-      regel_op_scherm();
-      submitted = true;
-    }
-  }
-  return input.toInt();
-}
-
 void zet_led_aan(int pinnummer) {
   pinMode(pinnummer, OUTPUT);
   digitalWrite(pinnummer, HIGH);
@@ -228,5 +222,6 @@ void setup() {
 }
 
 void loop() {
+  
 }
 /////// Einde eigen code ////////
