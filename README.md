@@ -14,8 +14,12 @@
   + [Input via een keypad](#input-via-een-keypad)
   + [Aansturen van LED](#aansturen-van-led)
   + [Potmeters](#potmeters)
+  + [Knoppen](#knoppen)
+  + [Servo motoren](#servo-motoren)
+  + [Geluid maken](#geluid-maken)
   + [DC motoren en Waterpomp](#dc-motoren-en-waterpomp)
   + [Analoge sensoren en Afstandsmeters](#analoge-sensoren-en-afstandsmeters)
+  + [SD Kaartlezer](#sd-kaartlezer)
   + [Controle functies](#controle-functies)
 
 ## Introductie
@@ -186,7 +190,7 @@ __Voorbeeld__:
   toon_op_scherm(String(getal) + '%'); 
   }
 ```
-
+---
 ### Aansturen van LED
 LED's zijn hippe, natuurvriendelijke en duurzame lampjes die erg makkelijk aan te sturen zijn. __Vergeet je resistor niet!__.
 
@@ -235,7 +239,7 @@ __Voorbeeld__:
   void loop() {
   }
 ```
-
+---
 ### Potmeters
 Een potentiometer kan je gebruiken als draaiknop om een waarde uit te lezen. De waarde loopt van 0 tot 100 (dicht tot helemaal open).
 
@@ -265,11 +269,26 @@ __Voorbeeld__:
   void loop() {
   }
 ```
+---
+### Knoppen
+Een drukknop kan wachten totdat deze ingedrukt wordt. Dat kan met de volgende functie.
+
+#### `wacht_op_knop(int *pinummer)`
+Wacht net zolang tot de knop is ingedrukt
+
+__Input__:
+  
+  _`int pinummer` (optioneel)_
+   
+ Het pinnummer van de knop.
+ _Standaard: 10_
+
+---
 ### Servo motoren
 Servo motoren aansturen doe je met de volgende functies. Let op met het opgeven van hoeken, de meeste servo's vinden hoeken onder de 20 en boven de 170 graden moeilijk. Ze gaan dan 'jitteren'.
 
 #### `positioneer_servo(int hoek, int *pinummer)`
-Laat je Arduino lekker rusten af en toe.
+Zet de servo in een bepaalde hoek.
 
 __Input__:
 
@@ -279,7 +298,7 @@ __Input__:
   
    _`int pinummer` (optioneel)_
   
-  Het pinnumer van de servo. 
+  Het pinnummer van de servo. 
   _Standaard: 9_
 
 __Output__:
@@ -297,11 +316,48 @@ __Voorbeeld__:
     
   }
 ```
+---
+### Geluid maken
+Als je een speaker aansluit kan je tonen (en dus muziek) maken met de volgende functie:
+
+#### `void speel_toon(int toon, float seconde, int *pinummer)`
+Speel een toon op de speaker.
+
+__Input__:
+
+  _`int toon`_
+  
+  De toon die je wilt spelen. Kijk naar de file "Pitches.h" om tonen te vinden.
+  
+  _`float seconde`_
+  
+  Aantal seconde dat toon speelt.
+
+   _`int pinummer` (optioneel)_
+  
+  Het pinnumer van de speaker. 
+  _Standaard: 11_
+  
+__Output__:
+  
+  Geen
+  
+__Voorbeeld__:
+```arduino
+  void setup() {
+    speel_toon(NOTE_G1, 10); // NOTE_G1 komt uit pitches.h
+  }
+  void loop() {
+    
+  }
+```
+---
+
 ### DC motoren en Waterpomp
 Dc motoren stuur je aan via een transistor (= een aan/uit knop). Een waterpomp stuur je op dezelfde manier aan als een dc motor.
 
 #### `dcmotor_seconde(float seconde, int *pinummer)`
-Laat je Arduino lekker rusten af en toe.
+Laat een DC motor draaien.
 
 __Input__:
 
@@ -327,7 +383,7 @@ __Voorbeeld__:
     
   }
 ```
-
+---
 ### Analoge sensoren en Afstandsmeters
 Veel sensoren die we gebruiken zijn analoog. Om deze sensoren uit te lezen gebruik je de volgende functie
 
@@ -357,7 +413,7 @@ __Voorbeeld__:
 ```
 
 #### `cm_afstand(int *trigpin, int *echopin)`
-Lees de waarde van de sensor.
+Lees de waarde van de afstandssensor. Om deze functie te gebruiken is het belangrijk de "Ultrasonic" library te installeren. Ga hiervoor in de Arduino IDE naar `Sketch > Include Library > Manage libraries...` en zoek dan op `Ultrasonic` en installeer de Ultrasonic library van `Eric Simões`.
 
 __Input__:
 
@@ -384,11 +440,99 @@ __Voorbeeld__:
     Serial.println(cm_afstand());
   }
 ```
+---
+### SD Kaartlezer
+Om je apparaat van data te voorzien heb je natuurlijk een database nodig. Wij gebruiken hiervoor een .csv bestand.
 
+#### `lees_numerieke_waarde(int waarde, int *pinummer)`
+Lees de waarde van de input op de sd kaart.
+
+__Input__:
+
+  _`int waarde`_
+  De 'sleutel' waarvan de waarde opgezocht moet worden
+  
+  _`int pinummer` (optioneel)_
+  Het pinummer (ss) van de SD kaartlezer.
+
+__Output__:
+  
+  _`int waarde`_
+  
+  De waarde die bij de 'sleutel' hoort
+
+__Voorbeeld__:
+
+Arduino code:
+
+```arduino
+  void setup(){
+    Serial.begin(9600);
+  }
+  
+  void loop(){
+    Serial.println(lees_numerieke_waarde(3511)); # Print: 45
+  }
+```
+
+Data.csv:
+```csv
+...
+3510, 67
+3511, 45
+3512, 12
+...
+```
+
+#### `lees_keuze_waardes(String waardes[], int lengtewaardes, int *pinummer)`
+Laat de gebruiker een keuze maken uit een lijst en geef de waarde op die plek terug.
+
+__Input__:
+
+  _`String waardes[]`_
+  De lijst met waardes om uit te kiezen
+  
+  _`int lengtewaardes`_
+  De lengte van de lijst hierboven.
+  
+  _`int pinummer` (optioneel)_
+  Het pinummer (ss) van de SD kaartlezer.
+
+__Output__:
+  
+  _`int waarde`_
+  
+  De waarde die bij de 'sleutel' hoort
+
+__Voorbeeld__:
+
+Arduino code:
+
+```arduino
+  void setup(){
+    Serial.begin(9600);
+    String keuzes[] = {"Aardig", "Boos", "Verwarrend", "Appelmoes"}; // Op deze manier maak je een lijst
+    Serial.println(lees_keuze_waardes(keuzes, 4)); // Laat de gebruiker een keuze maken uit de lijst. Bijvoorbeeld "Boos". Dat is plek 2, dus dit print "64"
+  }
+  
+  void loop(){
+  }
+```
+
+Data.csv:
+```csv
+...
+1, 67
+2, 64
+3, 12
+4, 14
+...
+```
+
+---
 ### Controle functies
 De volgende functies interacteren niet met onderdelen maar stellen je in staat je programma te controleren.
 
----
 #### `slaap(float seconde)`
 Laat je Arduino lekker rusten af en toe.
 

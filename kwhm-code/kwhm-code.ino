@@ -19,9 +19,8 @@ char keys[4][4] = {
 byte rowPins[4] = {9, 8, 7, 6};
 byte colPins[4] = {5, 4, 3, 2};
 
-
-byte servopin = 9;
-byte transistorpin = 13;
+byte servopin = 0;
+byte transistorpin = 3;
 byte speakerpin = 11;
 byte sensorpin = 0;
 byte trigpin = 12;
@@ -76,14 +75,10 @@ int lees_keuze_waardes(String waardes[], int lengtewaardes, int sdpin = sdpin){
   }
 }
 
-
-
-
-
-void wacht_op_knop(int knoppin = knoppin) {
-  pinMode(knoppin, INPUT);
-  while (true) {
-    int buttonState = digitalRead(10);
+void wacht_op_knop(int pinnummer = knoppin) {
+    pinMode(pinnummer, INPUT);
+    while (true) {
+    int buttonState = digitalRead(pinnummer);
     if (buttonState == HIGH) {
       slaap(0.3);
       return;
@@ -125,15 +120,16 @@ void speel_toon(int toon, float seconde, int pinummer = speakerpin) {
   noTone(pinummer);
 }
 
-void dcmotor_seconde(float seconde, int pinummer = transistorpin) {
-  pinMode(transistorpin, OUTPUT);
-  digitalWrite(transistorpin, HIGH);
+void dcmotor_seconde(float seconde, int pinnummer = transistorpin) {
+  pinMode(pinnummer, OUTPUT);
+  digitalWrite(pinnummer, HIGH);
   slaap(seconde);
-  digitalWrite(transistorpin, LOW);
+  digitalWrite(pinnummer, LOW);
 }
 
+
 void positioneer_servo(int hoek, int pinnummer = servopin) {
-  mijnservo.attach(servopin);
+  mijnservo.attach(pinnummer);
   mijnservo.write(hoek);
   delay(30);
   //  mijnservo.detach();
@@ -179,17 +175,17 @@ int toetsenbord_getal(int minimum, int maximum, String vraag = "", char bevestig
   return input.toInt();
 }
 
-void zet_led_aan(int pin) {
-  pinMode(pin, OUTPUT);
-  digitalWrite(pin, HIGH);
+void zet_led_aan(int pinnummer) {
+  pinMode(pinnummer, OUTPUT);
+  digitalWrite(pinnummer, HIGH);
 }
 
-void zet_led_uit(int pin) {
-  digitalWrite(pin, LOW);
+void zet_led_uit(int pinnummer) {
+  digitalWrite(pinnummer, LOW);
 }
 
-int lees_potmeter(int pin) {
-  return map(analogRead(pin), 0, 1023, 0, 100);
+int lees_potmeter(int pinnummer) {
+  return map(analogRead(pinnummer), 0, 1023, 0, 100);
 }
 
 void slaap(float seconde) {
@@ -205,8 +201,6 @@ void slaap(float seconde) {
 /////// Begin eigen code ////////
 void setup() {
   Serial.begin(9600);
-  String keuzes[] = {"Swen", "Mike", "Erik", "Sander"};
-  lees_keuze_waardes(keuzes, 4);
 }
 
 void loop() {
