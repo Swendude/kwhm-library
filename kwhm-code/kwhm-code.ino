@@ -36,7 +36,7 @@ Servo mijnservo;
 void wacht_op_knop(int knoppin = knoppin) {
     pinMode(knoppin, INPUT);
     while (true) {
-    int buttonState = digitalRead(10);
+    int buttonState = digitalRead(knoppin);
     if (buttonState == HIGH) {
       slaap(0.3);
       return;
@@ -85,7 +85,7 @@ void dcmotor_seconde(float seconde, int pinummer = transistorpin) {
   digitalWrite(transistorpin, LOW);
 }
 
-void positioneer_servo(int hoek, int pinnummer = servopin) {
+void positioneer_servo(int hoek, int servopin = servopin) {
   mijnservo.attach(servopin);
   mijnservo.write(hoek);
   delay(30);
