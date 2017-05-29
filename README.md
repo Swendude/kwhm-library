@@ -19,6 +19,7 @@
   + [Geluid maken](#geluid-maken)
   + [DC motoren en Waterpomp](#dc-motoren-en-waterpomp)
   + [Analoge sensoren en Afstandsmeters](#analoge-sensoren-en-afstandsmeters)
+  + [Bodemvochtgheid](#bodemvochtigheid)
   + [SD Kaartlezer](#sd-kaartlezer)
   + [Controle functies](#controle-functies)
 
@@ -441,6 +442,36 @@ __Voorbeeld__:
   }
 ```
 ---
+### Bodemvochtigheid
+Met een bodevochtigheidsmeter kan je verassend genoeg de vochtigheid van de bodem bepalen. Op de sensor zit een draaiknop (daarvoor heb je een kruiskop schroevendraaiertje nodig). Deze draaiknop bepaalt de gevoeligheid van de sensor. De sensor zal laten weten wanneer het vochtigheids niveau de drempelwaarde overschrijft.
+
+#### `wacht_op_vochtigheid(int* pinummer)`
+Wacht tot de gewenste vochtigheid bereikt is. 
+
+__Input__:
+  
+  _`int pinummer` (optioneel)_
+  Het pinnummer van de sensor (digitale pin). Standaard: 13
+  
+__Output__:
+
+  Geen
+  
+__Voorbeeld__:
+```arduino
+  void setup(){
+    Serial.begin(9600);
+  }
+  
+  void loop(){
+    wacht_op_vochtigheid(); // De code blijft hier wachten tot de vochtigheidswaarde overschreden is.
+    toon_op_scherm("Het is hier nat!");
+  }
+```
+Het afstellen van de sensor met de draaiknop kan je het beste even testen om de ideale positie te vinden!
+  
+
+---
 ### SD Kaartlezer
 Om je apparaat van data te voorzien heb je natuurlijk een database nodig. Wij gebruiken hiervoor een .csv bestand.
 
@@ -453,7 +484,7 @@ __Input__:
   De 'sleutel' waarvan de waarde opgezocht moet worden
   
   _`int pinummer` (optioneel)_
-  Het pinummer (ss) van de SD kaartlezer.
+  Het pinnummer (ss) van de SD kaartlezer.
 
 __Output__:
   
@@ -548,7 +579,7 @@ __Input__:
 
 __Output__:
   
-  Feen
+  Geen
   
   
 __Voorbeeld__:
