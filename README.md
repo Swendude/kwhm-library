@@ -9,9 +9,9 @@
 + [Hoe te starten?](#hoe-te-starten)
   + [Arduino IDE](#arduino-ide)
   + [KWHM File](#kwhm-file)
++ Voorbeeld
+  + [Elon Musk: houdt je kamer op de temperatuur onder je dekens](#bored-elon-musk-voorbeeld)
 + [Documentatie](#documentatie)
-  + Voorbeeld
-    + [Elon Musk: houdt je kamer op de temperatuur onder je dekens](#bored-elon-musk-voorbeeld)
   + Input
     + Sensoren
       + [Analoge sensoren](#analoge-sensoren)
@@ -73,12 +73,8 @@ void loop() {...}
 
 Deel 1 is door ons geschreven en mag je negeren. Het voorziet de rest van je code met handige helper-methodes zodat je je apparaat kan bouwen. In het ```eigen code``` blok gaan we (verassend genoeg) onze eigen code typen. Tijdens de masterclass zal uitgelegd worden hoe je precies moet coderen met deze file. Hieronder volgt de documentatie (uitleg) van alles functies die je kan gebruiken.
 
-## Documentatie
-
-Hieronder staat de uitleg voor alle beschikbare functies. Ze zijn ingedeeld per categorie. 
-
-### Bored Elon Musk Voobeeld
-![](https://pbs.twimg.com/profile_images/378800000305778238/852d2f76797dbe1da82095f988d38fbe_400x400.png)
+## Bored Elon Musk Voobeeld
+![](https://pbs.twimg.com/profile_images/378800000305778238/852d2f76797dbe1da82095f988d38fbe_400x400.png =200x)
 
 _Thermostat that sets your entire house to be the same temperate as under your blanket as you wake up and get out of bed._
 
@@ -116,6 +112,10 @@ void loop() {
 }
 ```
 ---
+## Documentatie
+
+Hieronder staat de uitleg voor alle beschikbare functies. Ze zijn ingedeeld per categorie. 
+
 ### Informatie tonen in de serial monitor
 
 Arduino kan ons berichten sturen via een "seriele" poort. Die berichten kunnen we bekijken met een "seriele monitor". Gelukkig heeft de Arduino IDE al zo'n monitor voor ons klaargezet. Deze is te vinden onder ```Tools > Serial Monitor```. Door gebruik te maken van onderstaande functies. __Zorg ervoor dat je Seriele Monitor op '9600 baud' staat (rechtsonderin). Daarnaast moet je de seriele verbinding 'starten' door als eerste ```Serial.begin(9600);``` in je setup te plaatsen (zie voorbeelden)__
