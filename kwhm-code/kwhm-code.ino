@@ -27,6 +27,7 @@ byte trigpin = 12;
 byte echopin = 13;
 byte knoppin = 10;
 byte sdpin = 10;
+byte moisturepin = 13;
 
 File datafile;
 
@@ -34,6 +35,11 @@ Keypad toetsenbord = Keypad( makeKeymap(keys), rowPins, colPins, 4, 4);
 Servo mijnservo;
 
 /// Einde instellingen componenten ///
+
+void wacht_op_vochtigheid(int moisturepin = moisturepin){
+  pinMode(moisturepin, INPUT);
+  while (digitalRead(moisturepin) != 1) {};
+}
 
 int lees_tekst_waarde(String waarde, int sdpin = sdpin){
   bool hasSD = SD.begin(sdpin);
