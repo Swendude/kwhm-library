@@ -10,27 +10,25 @@
   + [Arduino IDE](#arduino-ide)
   + [KWHM File](#kwhm-file)
 + [Documentatie](#documentatie)
-  + Input
-    + Sensoren
+  + [Input]
+    + [Sensoren]
       + [Analoge sensoren](#analoge-sensoren)
       + [Afstandsensor](#afstandsensor)
       + [Vochtsensor](#bodemvochtigheid)
       + [Temperatuursensor](#temperatuursensor)
-    + andere input
+    + [andere input]
       + [Input via een keypad](#input-via-een-keypad)
       + [Potmeters](#potmeters)
       + [knop](#knoppen)
-
-    
-  + Data
+  + [Data]
     + [SD Kaartlezer](#sd-kaartlezer)
-  + Output
+  + [Output]
     + [Informatie tonen in de serial monitor](#informatie-tonen-in-de-serial-monitor)
     + [Aansturen van LED](#aansturen-van-led)
     + [Servo motoren](#servo-motoren)
     + [Geluid maken](#geluid-maken)
     + [DC motoren en Waterpomp](#dc-motoren-en-waterpomp)
-  + Extra
+  + [Extra]
     + [Controle functies](#controle-functies)
 
 ## Introductie
