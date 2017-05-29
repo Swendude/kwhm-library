@@ -9,6 +9,8 @@
 + [Hoe te starten?](#hoe-te-starten)
   + [Arduino IDE](#arduino-ide)
   + [KWHM File](#kwhm-file)
++ Voorbeeld
+  + [Elon Musk houdt je kamer op de temperatuur onder je dekens](#bored-elon-musk-voorbeeld)
 + [Documentatie](#documentatie)
   + Input
     + Sensoren
@@ -71,6 +73,44 @@ void loop() {...}
 
 Deel 1 is door ons geschreven en mag je negeren. Het voorziet de rest van je code met handige helper-methodes zodat je je apparaat kan bouwen. In het ```eigen code``` blok gaan we (verassend genoeg) onze eigen code typen. Tijdens de masterclass zal uitgelegd worden hoe je precies moet coderen met deze file. Hieronder volgt de documentatie (uitleg) van alles functies die je kan gebruiken.
 
+## Bored Elon Musk Voorbeeld
+<img src="https://pbs.twimg.com/profile_images/378800000305778238/852d2f76797dbe1da82095f988d38fbe_400x400.png" width="100">
+_Thermostat that sets your entire house to be the same temperate as under your blanket as you wake up and get out of bed._
+
+Dit voorbeeld laat zien hoe je met een temperatuursensor en een servo het bovenstaande voorbeeld kunt uitwerken.
+
+Benodigdheden:
+  + Arduino
+  + usb kabel voor de arduino
+  + temperatuursensor (aangesloten op analoge pin 0)
+  + Servo motor (aangesloten op digitale pin 9)
+  
+__Voorbeeld__:
+```arduino
+void setup() {
+  Serial.begin(9600);
+}
+
+void loop() {
+   // lees de temperatuur
+  int temperatuur = lees_temperatuur(sensorpin = 0);
+  // bereken de hoek voor de servo motor
+  int hoek = map(temperatuur, 15, 50, 15, 170);
+  // bereken de bijbehorende stand van de verwarming. Mijn verwarming
+  // heeft thuis 9 standen. Daarom wil ik graag dat hij deze ook 
+  // op het scherm kan tonen zodat ik zie wat mijn programma doet.
+  int stand_verwarming = map(hoek, 15, 170, 1, 9);
+
+  // zet de servo motor (180* motor) in de juiste hoek
+  positioneer_servo(hoek, pinnummer = 9);
+
+  // toon de waarden in de seriele monitor
+  toon_op_scherm("temperatuur: " + String(temperatuur));
+  toon_op_scherm("stand verwarming: " + String(stand_verwarming));
+  slaap(5);
+}
+```
+---
 ## Documentatie
 
 Hieronder staat de uitleg voor alle beschikbare functies. Ze zijn ingedeeld per categorie. 
@@ -290,7 +330,7 @@ __Input__:
   _`int pinummer` (optioneel)_
    
  Het pinnummer van de knop.
- _Standaard: 10_
+ _Standaard: 2_
 
 ---
 ### Servo motoren
