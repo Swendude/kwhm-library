@@ -10,18 +10,28 @@
   + [Arduino IDE](#arduino-ide)
   + [KWHM File](#kwhm-file)
 + [Documentatie](#documentatie)
-  + [Informatie tonen in de serial monitor](#informatie-tonen-in-de-serial-monitor)
-  + [Input via een keypad](#input-via-een-keypad)
-  + [Aansturen van LED](#aansturen-van-led)
-  + [Potmeters](#potmeters)
-  + [Knoppen](#knoppen)
-  + [Servo motoren](#servo-motoren)
-  + [Geluid maken](#geluid-maken)
-  + [DC motoren en Waterpomp](#dc-motoren-en-waterpomp)
-  + [Analoge sensoren en Afstandsmeters](#analoge-sensoren-en-afstandsmeters)
-  + [Bodemvochtgheid](#bodemvochtigheid)
-  + [SD Kaartlezer](#sd-kaartlezer)
-  + [Controle functies](#controle-functies)
+  + Input
+    + Sensoren
+      + [Analoge sensoren](#analoge-sensoren)
+      + [Afstandsensor](#afstandsensor)
+      + [Vochtsensor](#bodemvochtigheid)
+      + [Temperatuursensor](#temperatuursensor)
+    + andere input
+      + [Input via een keypad](#input-via-een-keypad)
+      + [Potmeters](#potmeters)
+      + [knop](#knoppen)
+
+    
+  + Data
+    + [SD Kaartlezer](#sd-kaartlezer)
+  + Output
+    + [Informatie tonen in de serial monitor](#informatie-tonen-in-de-serial-monitor)
+    + [Aansturen van LED](#aansturen-van-led)
+    + [Servo motoren](#servo-motoren)
+    + [Geluid maken](#geluid-maken)
+    + [DC motoren en Waterpomp](#dc-motoren-en-waterpomp)
+  + Extra
+    + [Controle functies](#controle-functies)
 
 ## Introductie
 
@@ -385,7 +395,7 @@ __Voorbeeld__:
   }
 ```
 ---
-### Analoge sensoren en Afstandsmeters
+### Analoge sensoren
 Veel sensoren die we gebruiken zijn analoog. Om deze sensoren uit te lezen gebruik je de volgende functie
 
 #### `lees_sensor(int *sensorpin)`
@@ -413,6 +423,7 @@ __Voorbeeld__:
   }
 ```
 
+### Afstandsensor
 #### `cm_afstand(int *trigpin, int *echopin)`
 Lees de waarde van de afstandssensor. Om deze functie te gebruiken is het belangrijk de "Ultrasonic" library te installeren. Ga hiervoor in de Arduino IDE naar `Sketch > Include Library > Manage libraries...` en zoek dan op `Ultrasonic` en installeer de Ultrasonic library van `Eric Simões`.
 
@@ -442,6 +453,36 @@ __Voorbeeld__:
   }
 ```
 ---
+
+### Temperatuursensor
+De temperatuursensor is een analoge sensor die de temperatuur teruggeeft in graden celcius.
+#### `lees_temperatuur(int *sensorpin)`
+Lees de waarde van de sensor.
+
+__Input__:
+
+  _`int sensorpin` (optioneel)_
+  
+  De (analoge) pin waarop de sensor is aangesloten. Default: 0
+
+__Output__:
+  
+  _`int temperatuur`_
+  
+  De waarde van de temperatuursensor, in graden celcius. Hij geeft de temperatuur in graden zonder decimalen. 
+  
+__Voorbeeld__:
+```arduino
+  void setup() {
+    Serial.begin(9600);
+  }
+  void loop() {
+    int temperatuur = lees_temperatuur();
+    toon_op_scherm(temperatuur);
+    slaap(1)
+  }
+```
+
 ### Bodemvochtigheid
 Met een bodevochtigheidsmeter kan je verassend genoeg de vochtigheid van de bodem bepalen. Op de sensor zit een draaiknop (daarvoor heb je een kruiskop schroevendraaiertje nodig). Deze draaiknop bepaalt de gevoeligheid van de sensor. De sensor zal laten weten wanneer het vochtigheids niveau de drempelwaarde overschrijft.
 
