@@ -10,6 +10,8 @@
   + [Arduino IDE](#arduino-ide)
   + [KWHM File](#kwhm-file)
 + [Documentatie](#documentatie)
+  + Voorbeeld
+    + [Elon Musk: houdt je kamer op de temperatuur onder je dekens](#bored-elon-musk-voorbeeld)
   + Input
     + Sensoren
       + [Analoge sensoren](#analoge-sensoren)
@@ -75,6 +77,45 @@ Deel 1 is door ons geschreven en mag je negeren. Het voorziet de rest van je cod
 
 Hieronder staat de uitleg voor alle beschikbare functies. Ze zijn ingedeeld per categorie. 
 
+### Bored Elon Musk Voobeeld
+![](https://pbs.twimg.com/profile_images/378800000305778238/852d2f76797dbe1da82095f988d38fbe_400x400.png)
+
+_Thermostat that sets your entire house to be the same temperate as under your blanket as you wake up and get out of bed._
+
+Dit voorbeeld laat zien hoe je met een temperatuursensor en een servo het bovenstaande voorbeeld kunt uitwerken.
+
+Benodigdheden:
+  + Arduino
+  + usb kabel voor de arduino
+  + temperatuursensor (aangesloten op analoge pin 0)
+  + Servo motor (aangesloten op digitale pin 9)
+  
+__Voorbeeld__:
+```arduino
+void setup() {
+  Serial.begin(9600);
+}
+
+void loop() {
+   // lees de temperatuur
+  int temperatuur = lees_temperatuur(sensorpin = 0);
+  // bereken de hoek voor de servo motor
+  int hoek = map(temperatuur, 15, 50, 15, 170);
+  // bereken de bijbehorende stand van de verwarming. Mijn verwarming
+  // heeft thuis 9 standen. Daarom wil ik graag dat hij deze ook 
+  // op het scherm kan tonen zodat ik zie wat mijn programma doet.
+  int stand_verwarming = map(hoek, 15, 170, 1, 9);
+
+  // zet de servo motor (180* motor) in de juiste hoek
+  positioneer_servo(hoek, pinnummer = 9);
+
+  // toon de waarden in de seriele monitor
+  toon_op_scherm("temperatuur: " + String(temperatuur));
+  toon_op_scherm("stand verwarming: " + String(stand_verwarming));
+  slaap(5);
+}
+```
+---
 ### Informatie tonen in de serial monitor
 
 Arduino kan ons berichten sturen via een "seriele" poort. Die berichten kunnen we bekijken met een "seriele monitor". Gelukkig heeft de Arduino IDE al zo'n monitor voor ons klaargezet. Deze is te vinden onder ```Tools > Serial Monitor```. Door gebruik te maken van onderstaande functies. __Zorg ervoor dat je Seriele Monitor op '9600 baud' staat (rechtsonderin). Daarnaast moet je de seriele verbinding 'starten' door als eerste ```Serial.begin(9600);``` in je setup te plaatsen (zie voorbeelden)__
