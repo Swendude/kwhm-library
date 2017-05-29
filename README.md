@@ -429,7 +429,7 @@ __Input__:
 
   _`int trigpin` (optioneel)_
   
-  De pin waarop de aansluiting 'trig' zit. Standaard: 12
+  De pin waarop de aansluiting 'trig' zit. Standaard: 11
  
   _`int echopin` (optioneel)_
   
