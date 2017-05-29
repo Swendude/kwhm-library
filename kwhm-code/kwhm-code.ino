@@ -19,19 +19,24 @@ char keys[4][4] = {
 byte rowPins[4] = {9, 8, 7, 6};
 byte colPins[4] = {5, 4, 3, 2};
 
-byte servopin = 0;
-byte transistorpin = 3;
-byte speakerpin = 11;
-byte sensorpin = 0;
+// input
+byte sensorpin = 0; // dit is de analoge pin
 byte trigpin = 12;
 byte echopin = 13;
 byte knoppin = 10;
-byte sdpin = 10;
 byte moisturepin = 13;
+
+// data
+byte sdpin = 10;
+
+// output
+byte servopin = 0; // dit is de analoge pin
+byte transistorpin = 3;
+byte speakerpin = 11;
 
 File datafile;
 
-Keypad toetsenbord = Keypad( makeKeymap(keys), rowPins, colPins, 4, 4);
+Keypad toetsenbord = Keypad(makeKeymap(keys), rowPins, colPins, 4, 4);
 Servo mijnservo;
 
 /// Einde instellingen componenten ///
@@ -162,6 +167,18 @@ int lees_sensor(int sensorpin = sensorpin) {
   return map(analogRead(sensorpin), 0, 1024, 0 , 100);
 }
 
+int lees_temperatuur(int sensorpin = sensorpin) {
+  int reading = analogRead(sensorpin);  
+  
+  // converting that reading to voltage (assumed we use 5v as V_in)
+  float voltage = reading * 5.0;
+  voltage /= 1024.0; 
+
+  // return temperature
+  int temperatureC = (int)((voltage - 0.5) * 100);  //converting from 10 mv per degree wit 500 mV to degrees ((voltage - 500mV) times 100)
+  return temperatureC;
+}
+
 void speel_toon(int toon, float seconde, int pinummer = speakerpin) {
   tone(pinummer, toon);
   slaap(seconde);
@@ -228,6 +245,6 @@ void setup() {
 }
 
 void loop() {
-  
+
 }
 /////// Einde eigen code ////////
