@@ -23,7 +23,7 @@ byte colPins[4] = {5, 4, 3, 2};
 byte sensorpin = 0; // dit is de analoge pin
 byte trigpin = 11;
 byte echopin = 12;
-byte knoppin = 10;
+byte knoppin = 2;
 byte moisturepin = 13;
 
 // data
