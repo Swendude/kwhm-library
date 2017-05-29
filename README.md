@@ -73,7 +73,7 @@ void loop() {...}
 
 Deel 1 is door ons geschreven en mag je negeren. Het voorziet de rest van je code met handige helper-methodes zodat je je apparaat kan bouwen. In het ```eigen code``` blok gaan we (verassend genoeg) onze eigen code typen. Tijdens de masterclass zal uitgelegd worden hoe je precies moet coderen met deze file. Hieronder volgt de documentatie (uitleg) van alles functies die je kan gebruiken.
 
-## Bored Elon Musk Voobeeld
+## Bored Elon Musk Voorbeeld
 <img src="https://pbs.twimg.com/profile_images/378800000305778238/852d2f76797dbe1da82095f988d38fbe_400x400.png" width="100">
 _Thermostat that sets your entire house to be the same temperate as under your blanket as you wake up and get out of bed._
 
