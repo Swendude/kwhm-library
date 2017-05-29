@@ -290,7 +290,7 @@ __Input__:
   _`int pinummer` (optioneel)_
    
  Het pinnummer van de knop.
- _Standaard: 10_
+ _Standaard: 2_
 
 ---
 ### Servo motoren
