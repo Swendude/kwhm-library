@@ -462,11 +462,17 @@ __Voorbeeld__:
 ```
 
 ### Afstandsensor
-#### `cm_afstand(int *trigpin, int *echopin)`
-Lees de waarde van de afstandssensor. Om deze functie te gebruiken is het belangrijk de "Ultrasonic" library te installeren. Ga hiervoor in de Arduino IDE naar `Sketch > Include Library > Manage libraries...` en zoek dan op `Ultrasonic` en installeer de Ultrasonic library van `Eric Simões`.
+#### `cm_afstand(int *max_afstand, int *trigpin, int *echopin)`
+Lees de waarde van de afstandsensor. Om deze functie te gebruiken is het belangrijk de "Ultrasonic" library te installeren. Ga hiervoor in de Arduino IDE naar `Sketch > Include Library > Manage libraries...` en zoek dan op `Ultrasonic` en installeer de Ultrasonic library van `Eric Simões`. 
+
+De afstandsensor berekent de afstand in cm nauwkeurig, tot een maximale afstand die jij wilt herkennen (namelijk, `max_afstand`). Als de afstand groter is dan de maximale afstand, geeft de sensor -1 als afstand terug.
 
 __Input__:
 
+  _`int max_afstand` (optioneel)_
+  
+  De maximale afstand die je afstandsensor moet meten, in centimeters. Standaard: 100
+  
   _`int trigpin` (optioneel)_
   
   De pin waarop de aansluiting 'trig' zit. Standaard: 11
@@ -487,7 +493,8 @@ __Voorbeeld__:
     Serial.begin(9600);
   }
   void loop() {
-    Serial.println(cm_afstand());
+    int getal = cm_afstand(max_afstand = 100);
+    toon_op_scherm(getal);
   }
 ```
 ---
