@@ -483,9 +483,9 @@ __Input__:
 
 __Output__:
   
-  _`int waarde`_
+  _`int getal`_
   
-  De waarde van de sensor. 0 = 0cm afstand, 100 = >50cm afstand.
+  Het aantal centimters dat de afstandsensor meet tot het object. dit is -1 als `getal > max_afstand`
   
 __Voorbeeld__:
 ```arduino
